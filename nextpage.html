@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine ❤️</title>
+    <!-- Add Climate Crisis Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Climate Crisis', cursive; /* Apply Climate Crisis font */
+            background: linear-gradient(135deg, #1E1E1E, #3A3A3A);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Confetti Full Screen */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Fixed Header with Infinite Scrolling Text */
+        header {
+            position: fixed; /* Fixed header */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(135deg, #1E1E1E, #3A3A3A); /* Match body background */
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 50px;
+            color: red;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            z-index: 1000; /* Ensure header is above other content */
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        .scrolling-text span {
+            display: inline-block;
+            animation: scroll 10s linear infinite;
+            padding: 0 50px;
+        }
+
+        /* Bento Grid using Flexbox */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            margin-top: 80px; /* Adjusted margin to account for fixed header */
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-container .image-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 2px solid black; /* Sharp Border */
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .gallery-container .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Hover Effect: Move image up */
+        .gallery-container .image-box:hover {
+            transform: translateY(-10px); /* Move up by 10px */
+        }
+
+        /* Bento Grid Structure */
+        .image-box { flex: 1 1 30%; height: 200px; }  /* Default size */
+        .wide { flex: 2 1 60%; } /* Wider images */
+        .tall { height: 400px; } /* Taller images */
+        .large { flex: 2 1 60%; height: 400px; } /* Large images */
+
+        @media (max-width: 768px) {
+            .image-box { flex: 1 1 45%; height: 250px; }
+            .wide, .large { flex: 1 1 90%; height: 1000px; }
+            .tall { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Confetti -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Fixed Header with Infinite Scrolling Text -->
+    <header>
+        <div class="scrolling-text">
+            <span>SEE YOU ON 14TH FEB BABY GIRL , LOVE YOU! </span>
+        </div>
+    </header>
+
+    <!-- Bento Grid Image Gallery -->
+    <div class="gallery-container">
+        <div class="image-box wide"><img src="Image/image1.jpg" alt="Valentine"></div>
+        <div class="image-box"><img src="Image/image2.jpg" alt="Valentine"></div>
+        <div class="image-box tall"><img src="Image/image3.jpg" alt="Valentine"></div>
+        <div class="image-box"><img src="Image/image4.PNG" alt="Valentine"></div>
+        <div class="image-box large"><img src="Image/image13.jpg" alt="Valentine"></div>
+        <div class="image-box"><img src="Image/image18.jpg" alt="Valentine"></div>
+        <div class="image-box"><img src="Image/image6.jpg" alt="Valentine"></div>
+        <div class="image-box wide"><img src="Image/IMG_9404.jpg" alt="Valentine"></div>
+        <div class="image-box"><img src="Image/IMG_9402.jpg" alt="Valentine"></div>
+        <div class="image-box tall"><img src="Image/image10.jpg" alt="Valentine"></div>
+        <div class="image-box"><img src="Image/IMG_9401.jpg" alt="Valentine"></div>
+        <div class="image-box large"><img src="Image/image12l.jpg" alt="Valentine"></div>
+    </div>
+
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        function launchConfetti() {
+            var duration = 6 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 7,
+                    spread: 200,
+                    startVelocity: 40,
+                    origin: { y: 0.0 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        }
+
+        window.onload = launchConfetti;
+    </script>
+
+</body>
+</html>
